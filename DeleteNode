@@ -1,0 +1,28 @@
+//https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list?h_r=next-challenge&h_v=zen
+/*
+  Delete Node at a given position in a linked list 
+  Node is defined as 
+  struct Node
+  {
+     int data;
+     struct Node *next;
+  }
+*/
+Node* Delete(Node *head, int position)
+{
+  // Complete this method
+    struct Node *temp, *deleteNode;
+    temp = head;
+    if (position == 0) {
+        head = head->next;
+        free(temp);
+    } else {
+        while (--position > 0) {
+            temp = temp->next;
+        }
+        deleteNode = temp->next;
+        temp->next = deleteNode->next;
+        free (deleteNode);
+    }
+    return head;
+}
